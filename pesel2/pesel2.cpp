@@ -5,7 +5,8 @@
 using namespace std;
 int main()
 {
-    cout << "Hello World!\n";
+    cout << "sigm23123\n";
+    cout << "skibid" << endl;
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania

@@ -3,10 +3,33 @@
 
 #include <iostream>
 using namespace std;
+
+bool sprawdznie(string pesel1)
+{
+	S
+
+}
+
+string plec(string pesel1)
+{
+	if (pesel1[9] % 2 = 0)
+	{
+		return "K";
+	} 
+	else 
+	{
+		return "M";
+	}
+
+		
+}
+
 int main()
 {
-    cout << "sigm23123\n";
-    cout << "skibid" << endl;
+	string pesel = "55030101193";
+	cout << pesel[1] << endl;
+
+
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania

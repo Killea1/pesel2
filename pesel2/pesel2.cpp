@@ -1,44 +1,106 @@
-﻿// pesel2.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
-//
-
 #include <iostream>
 using namespace std;
 
-bool sprawdznie(string pesel1)
+/**************************************
+* nazwa funkcji:        SprawdzeniePeselu
+* opis funkcji:         Funkcja sprawdza czy podany pesel jest poprawny poprzez sprawdzenie liczby kontrolnej peselu
+* parametry:            pesel - lancuch znakow ktory jest peselem 
+* zwracany typ i opis:  bool zwraca "true" lub "false" zaleznie od tego czy podany pesel jest poprawny
+* autor:                00000000000
+**************************************/
+bool SprawdzeniePeselu(string pesel)
 {
-	S
+
+    int S = 0;
+    for (int i = 0; i <= 10; i++)
+    {
+        if (i == 0 || i == 4 || i == 8)
+        {
+            S = S + ((int)pesel[i]-48) * 1;
+        }
+        else if (i == 1 || i == 5 || i == 9)
+        {
+            S = S + ((int)pesel[i]-48) * 3;
+        }
+
+        else if (i == 2 || i == 6) {
+            S = S + ((int)pesel[i]-48) * 7;
+        }
+
+        else if (i == 3 || i == 7)
+        {
+            S = S + ((int)pesel[i]-48) * 9;
+        }
+    }
+    int M = S % 10;
+    int R;
+    if (M == 0)
+    {
+        R = 0;
+    }
+    else
+    {
+        R = 10 - M;
+    }
+    if ( R == ((int)pesel[10]-48))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 
 }
 
-string plec(string pesel1)
-{
-	if (pesel1[9] % 2 = 0)
-	{
-		return "K";
-	} 
-	else 
-	{
-		return "M";
-	}
 
-		
+
+
+string SprawdzeniePlci(string pesel)
+{
+    if (pesel[9] % 2 == 0)
+    {
+        return "K";
+    }
+    else
+    {
+        return "M";
+    }
+
+
 }
 
 int main()
 {
-	string pesel = "55030101193";
-	cout << pesel[1] << endl;
-
-
+    cout << "Podaj swoj pesel" << endl;
+    string pesel;
+    while (pesel.length() != 11)
+    {
+        cin >> pesel;
+        if (pesel.length() < 11)
+        {
+            cout << "Podaj poprawny pesel (pesel jest za krotki)" << endl;
+        }
+        else if (pesel.length() > 11)
+        {
+            cout << "Podaj poprawny pesel (pesel jest za dlugi)" << endl;
+        }
+    }
+    if (SprawdzeniePlci(pesel) == "K")
+    {
+        cout << "Kobieta" << endl;
+    }
+    else
+    {
+        cout << "Mezczyzna" << endl;
+    }
+    if (SprawdzeniePeselu(pesel) == true)
+    {
+        cout << "Pesel jest zgodny" << endl;
+    }
+    else
+    {
+        cout << "Pesel jest niezgodny" << endl;
+    }
 }
 
-// Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
-// Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
-
-// Porady dotyczące rozpoczynania pracy:
-//   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
-//   2. Użyj okna programu Team Explorer, aby nawiązać połączenie z kontrolą źródła
-//   3. Użyj okna Dane wyjściowe, aby sprawdzić dane wyjściowe kompilacji i inne komunikaty
-//   4. Użyj okna Lista błędów, aby zobaczyć błędy
-//   5. Wybierz pozycję Projekt > Dodaj nowy element, aby utworzyć nowe pliki kodu, lub wybierz pozycję Projekt > Dodaj istniejący element, aby dodać istniejące pliku kodu do projektu
-//   6. Aby w przyszłości ponownie otworzyć ten projekt, przejdź do pozycji Plik > Otwórz > Projekt i wybierz plik sln
